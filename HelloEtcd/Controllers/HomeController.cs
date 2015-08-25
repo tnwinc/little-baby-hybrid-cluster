@@ -9,10 +9,12 @@ namespace HelloEtcd.Controllers
     public class HomeController : Controller
     {
         private string StringFromEtcd => "not real";
+        private string OS => System.Environment.OSVersion.VersionString;
 
         public IActionResult Index()
         {
             ViewData["etcd"] = StringFromEtcd;
+            ViewData["os"] = OS;
             return View();
         }
 

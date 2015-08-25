@@ -23,8 +23,7 @@
   },
 
   "frameworks": {
-    "dnx451": {},
-    "dnxcore50": {}
+    "dnx451": {}
   },
 
   "exclude": [
@@ -42,7 +41,7 @@
   "scripts": {
     "prepublish": [
       "npm install",
-      "bower install", 
+      "bower install",
       "gulp clean",
       "gulp min"
     ]
