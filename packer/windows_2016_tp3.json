@@ -18,8 +18,6 @@
       "vnc_port_max": 5980,
       "floppy_files": [
         "./Autounattend.xml",
-        "./scripts/microsoft-updates.bat",
-        "./scripts/win-updates.ps1",
         "./scripts/openssh.ps1"
       ],
       "vmx_data": {
