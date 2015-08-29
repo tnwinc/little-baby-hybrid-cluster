@@ -4,7 +4,9 @@ param($global:RestartRequired=0,
         $MaxUpdatesPerCycle=500)
 
 $Logfile = "C:\Windows\Temp\win-updates.log"
-
+Write-Output "I was win-updates.ps1"
+start-sleep -seconds 10
+exit
 function LogWrite {
    Param ([string]$logstring)
    $now = Get-Date -format s
