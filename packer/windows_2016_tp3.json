@@ -33,6 +33,14 @@
       }
     }
   ],
+  "provisioners": [
+    {
+      "type": "windows-shell",
+      "inline": [
+        "pause"
+      ]
+    }
+  ], 
   "post-processors": [
     {
       "type": "vagrant",
