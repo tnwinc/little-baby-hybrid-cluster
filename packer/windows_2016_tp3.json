@@ -7,22 +7,21 @@
       "iso_checksum": "458ff91f8abc21b75cb544744bf92e6a",
       "headless": true,
 	  "communicator": "winrm",
-	  "winrm_username": "vagrant",
-	  "winrm_password": "vagrant",
+	  "winrm_username": "packer",
+	  "winrm_password": "packer",
       "boot_wait": "2m",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
+      "ssh_username": "packer",
+      "ssh_password": "packer",
       "ssh_wait_timeout": "6h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "windows8srv-64",
-      "tools_upload_flavor": "",
+      "tools_upload_flavor": "windows",
       "disk_size": 61440,
       "vnc_port_min": 5901,
       "vnc_port_max": 5980,
       "floppy_files": [
         "./Autounattend.xml",
-        "./scripts/runonce.bat",
-		"./scripts/remoting.cmd"
+		"./scripts_unattend/*"
       ],
       "vmx_data": {
         "RemoteDisplay.vnc.enabled": "false",
@@ -34,6 +33,18 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "powershell",
+      "inline": [
+        "while (!(Test-Path c:\\status.txt)) { Start-Sleep -Seconds 30 }"
+      ]
+    },
+    {
+      "type": "windows-shell",
+      "inline": [
+        "wmic useraccount where name='packer' set disabled=false"
+      ]
+    },
     {
       "type": "windows-shell",
       "inline": [

@@ -69,8 +69,8 @@
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
-                <FullName>Vagrant</FullName>
-                <Organization>Vagrant</Organization>
+                <FullName>Packer</FullName>
+                <Organization>Packer</Organization>
             </UserData>
         </component>
     </settings>
@@ -79,8 +79,8 @@
             <OEMInformation>
                 <HelpCustomized>false</HelpCustomized>
             </OEMInformation>
-            <ComputerName>vagrant-2012-r2</ComputerName>
-            <TimeZone>Pacific Standard Time</TimeZone>
+            <ComputerName>packer-2016-tp3</ComputerName>
+            <TimeZone>Eastern Standard Time</TimeZone>
             <RegisteredOwner/>
         </component>
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -104,17 +104,17 @@
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <AutoLogon>
                 <Password>
-                    <Value>vagrant</Value>
+                    <Value>packer</Value>
                     <PlainText>true</PlainText>
                 </Password>
                 <Enabled>true</Enabled>
-                <Username>vagrant</Username>
+                <Username>packer</Username>
             </AutoLogon>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c a:\remoting.cmd</CommandLine>
+                    <CommandLine>cmd.exe /c a:\runonce.bat</CommandLine>
                     <Description>Install Windows Updates</Description>
-                    <Order>100</Order>
+                    <Order>1</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <!-- END WITH WINDOWS UPDATES -->
@@ -133,19 +133,19 @@
             </OOBE>
             <UserAccounts>
                 <AdministratorPassword>
-                    <Value>vagrant</Value>
+                    <Value>thisistheadministratorpassword</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>vagrant</Value>
+                            <Value>packer</Value>
                             <PlainText>true</PlainText>
                         </Password>
                         <Group>administrators</Group>
-                        <DisplayName>Vagrant</DisplayName>
-                        <Name>vagrant</Name>
-                        <Description>Vagrant User</Description>
+                        <DisplayName>Packer</DisplayName>
+                        <Name>packer</Name>
+                        <Description>Packer User</Description>
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
