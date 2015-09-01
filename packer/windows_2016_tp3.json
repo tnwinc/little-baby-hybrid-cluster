@@ -2,9 +2,8 @@
   "builders": [
     {
       "type": "vmware-iso",
-      "iso_url": "d:/ISO/WIN2016TP3-10514.0.150808-1529.TH2_RELEASE_SERVER_OEMRET_X64FRE_EN-US.iso",
+      "iso_url": "iso/WIN2016TP3-10514.0.150808-1529.TH2_RELEASE_SERVER_OEMRET_X64FRE_EN-US.iso",
       "iso_checksum_type": "none",
-      "iso_checksum": "458ff91f8abc21b75cb544744bf92e6a",
       "headless": true,
 	  "communicator": "winrm",
 	  "winrm_username": "packer",
@@ -30,6 +29,40 @@
         "numvcpus": "2",
         "scsi0.virtualDev": "lsisas1068"
       }
+    },
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "iso/WIN2016TP3-10514.0.150808-1529.TH2_RELEASE_SERVER_OEMRET_X64FRE_EN-US.iso",
+      "iso_checksum_type": "none",
+      "headless": false,
+      "boot_wait": "2m",
+	  "communicator": "winrm",
+	  "winrm_username": "packer",
+	  "winrm_password": "packer",	  
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "6h",
+      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "guest_os_type": "Windows2012_64",
+      "disk_size": 61440,
+      "floppy_files": [
+        "./Autounattend.xml",
+		"./scripts_unattend/*"
+      ],
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "2048"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ]
+      ]
     }
   ],
   "provisioners": [
@@ -53,7 +86,7 @@
     {
       "type": "windows-shell",
       "inline": [
-        "pause"
+        "dir"
       ]
     }
   ], 
@@ -63,6 +96,10 @@
       "keep_input_artifact": false,
       "output": "windows_2016_tp3_{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile-windows_2016_tp3.template"
-    }
+    },
+	{
+		"type":"compress",
+		"output":"{{.BuildName}}.zip"
+	}
   ]
 }
