@@ -75,7 +75,7 @@
     {
       "type": "powershell",
       "script": "scripts_packer/vm-guest-tools.ps1",
-	  "valid_exit_codes": [0,3010]
+	  "valid_exit_codes": [0,3010,1]
     },
     {
       "type": "windows-shell",
