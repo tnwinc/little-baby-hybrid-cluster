@@ -2,3 +2,5 @@ output-vmware-iso/*
 iso/*
 *.box
 *.zip
+Vagrantfile
+.vagrant/
